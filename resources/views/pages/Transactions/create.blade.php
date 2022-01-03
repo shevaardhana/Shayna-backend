@@ -36,7 +36,7 @@
                     </tr>
                     <tr>
                         <td class="select">
-                            <select name="details[0][products_id]" class="form-control @error('details[0][products_id]') is-invalid @enderror" >
+                            <select name="details[0] [products_id]" class="form-control @error('details[0] [products_id]') is-invalid @enderror" >
                                 <option>Pilih Barang</option>
                                 @foreach ($items as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -48,11 +48,7 @@
                     </tr>
                 </table>
 
-                <div class="form-group">
-                    <label for="address" class="form-control-label">Total</label>
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror"/>
-                    @error('address') <div class="text-muted">{{ $message }}</div> @enderror
-                </div>
+
 
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">Add Transaction</button>
@@ -72,7 +68,7 @@
         ++i;
 
         $("#dynamicTable").append('<tr>'+
-        '<td><select name="details[0][products_id]" class="form-control @error('details[0][products_id]') is-invalid @enderror" >'+
+        '<td><select name="details[0][products_id]" class="form-control @error('details[0] [products_id]') is-invalid @enderror" >'+
         '<option>Pilih Barang</option>'+
         '@foreach ($items as $item)'+
         '<option value="{{ $item->id }}">{{ $item->name }}</option>'+
@@ -86,6 +82,8 @@
     $(document).on('click', '.remove-tr', function(){
          $(this).parents('tr').remove();
     });
+
+
 
 </script>
 @endpush

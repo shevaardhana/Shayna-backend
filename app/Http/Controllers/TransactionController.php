@@ -51,23 +51,26 @@ class TransactionController extends Controller
 
         $data = $request->all();
 
-        $data['transaction_status'] = 'PENDING';
-
         $data = $request->except('transaction_details');
         $data['uuid'] = 'TRX' . mt_rand(10000,99999) . mt_rand(100,999);
 
+        $data['transaction_total'] = 10;
+        $data['transaction_status'] = 'PENDING';
+
         $transaction = Transaction::create($data);
 
-        foreach ($request->transaction_details as $product)
-        {
+        foreach ($request->details as $key => $value) {
+
             $details[] = new TransactionDetail([
                 'transactions_id' => $transaction->id,
-                'products_id' => $product,
+                'products_id' => $value,
             ]);
 
         }
 
         $transaction->details()->saveMany($details);
+
+
 
         return redirect()->route('transaction.index');
     }
@@ -80,7 +83,7 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $item = Transaction::with('details.product')->findOrFail($id);
+        $item = Transaction::with('details')->findOrFail($id);
 
         return view('pages.Transactions.show')->with([
             'item' => $item
