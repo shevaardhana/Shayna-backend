@@ -68,7 +68,7 @@
         ++i;
 
         $("#dynamicTable").append('<tr>'+
-        '<td><select name="details[0][products_id]" class="form-control @error('details[0] [products_id]') is-invalid @enderror" >'+
+        '<td><select name="details['+i+']" class="form-control @error('details[0] [products_id]') is-invalid @enderror" >'+
         '<option>Pilih Barang</option>'+
         '@foreach ($items as $item)'+
         '<option value="{{ $item->id }}">{{ $item->name }}</option>'+

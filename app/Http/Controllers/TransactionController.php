@@ -24,8 +24,9 @@ class TransactionController extends Controller
     {
         $items = Transaction::all();
 
+
         return view('pages.Transactions.index')->with([
-            'items' => $items
+            'items' => $items,
         ]);
     }
 
@@ -54,7 +55,7 @@ class TransactionController extends Controller
         $data = $request->except('transaction_details');
         $data['uuid'] = 'TRX' . mt_rand(10000,99999) . mt_rand(100,999);
 
-        $data['transaction_total'] = 10;
+        $data['transaction_total'] = 0;
         $data['transaction_status'] = 'PENDING';
 
         $transaction = Transaction::create($data);
@@ -66,11 +67,11 @@ class TransactionController extends Controller
                 'products_id' => $value,
             ]);
 
+
+
         }
 
         $transaction->details()->saveMany($details);
-
-
 
         return redirect()->route('transaction.index');
     }
