@@ -30,4 +30,8 @@ Route::resource('transaction', 'TransactionController');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
+Route::get('/cetak_pdf', 'CetakController@cetak_pdf')->name('cetak');
+
+
+
 

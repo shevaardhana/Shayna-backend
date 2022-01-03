@@ -116,6 +116,18 @@
                     </div>
                 </div>
             </div> <!-- /.col-md-4 -->
+
+            <div class="col-xl-4">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-12">
+                        <div class="card br-0">
+                            <div class="card-body">
+                                <a href="{{ route('cetak') }}" class="btn btn-primary" target="_blank">CETAK PDF</a>
+                            </div>
+                        </div><!-- /.card -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.orders -->

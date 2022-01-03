@@ -30,9 +30,7 @@
                                             <td>{{$item->email}}</td>
                                             <td>{{$item->number}}</td>
                                             <td>
-                                                @foreach ($total->details as $t)
-                                                    {{ $t->product->sum('price') }}
-                                                @endforeach
+                                               {{-- {{ $total }} --}}
                                             </td>
                                             <td>
                                                 @if ($item->transaction_status == 'PENDING')

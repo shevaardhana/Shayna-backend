@@ -48,7 +48,11 @@
                     </tr>
                 </table>
 
-
+                <div class="form-group">
+                    <label for="transaction_total" class="form-control-label">Total</label>
+                    <input name="transaction_total" class="ckeditor form-control @error('transaction_total') is-invalid @enderror"/>
+                    @error('transaction_total') <div class="text-muted">{{ $message }}</div> @enderror
+                </div>
 
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">Add Transaction</button>
