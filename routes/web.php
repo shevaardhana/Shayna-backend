@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\DashBoardController::class, 'index'])->middleware('auth')->name('DashBoard');
 
-Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::get('products/{id}/gallery', 'ProductController@gallery')
             ->name('products.gallery');
@@ -27,5 +27,7 @@ Route::resource('Product-Galleries', 'ProductGalleryController');
 Route::get('transaction/{id}/set-status', 'TransactionController@setStatus')
             ->name('transaction.status');
 Route::resource('transaction', 'TransactionController');
+
+Route::get('/logout', 'Auth\LoginController@logout');
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
@@ -35,7 +36,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $items = Product::all();
+        return view('pages.Transactions.create', compact('items'));
     }
 
     /**
@@ -47,6 +49,27 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
 
+        $data = $request->all();
+
+        $data['transaction_status'] = 'PENDING';
+
+        $data = $request->except('transaction_details');
+        $data['uuid'] = 'TRX' . mt_rand(10000,99999) . mt_rand(100,999);
+
+        $transaction = Transaction::create($data);
+
+        foreach ($request->transaction_details as $product)
+        {
+            $details[] = new TransactionDetail([
+                'transactions_id' => $transaction->id,
+                'products_id' => $product,
+            ]);
+
+        }
+
+        $transaction->details()->saveMany($details);
+
+        return redirect()->route('transaction.index');
     }
 
     /**

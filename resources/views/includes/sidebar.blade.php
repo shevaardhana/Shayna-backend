@@ -27,6 +27,9 @@
                 <li class="">
                     <a href="{{ route('transaction.index') }}"> <i class="menu-icon fa fa-list"></i>Lihat Transaksi</a>
                 </li>
+                <li class="">
+                    <a href="{{ route('transaction.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Transaksi</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

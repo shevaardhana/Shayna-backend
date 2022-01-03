@@ -24,6 +24,7 @@
 
 
         <div class="content">
+            @include('sweetalert::alert')
             @yield('content')
         </div>
 

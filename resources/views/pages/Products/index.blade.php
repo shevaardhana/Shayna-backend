@@ -22,9 +22,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $no = 0;?>
                                     @forelse ($items as $item)
+                                    <?php $no++ ;?>
                                         <tr>
-                                            <td>{{$item->id}}</td>
+                                            <td>{{$no}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item->type}}</td>
                                             <td>{{$item->price}}</td>

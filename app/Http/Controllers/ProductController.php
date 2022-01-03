@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ProductGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ProductController extends Controller
@@ -53,6 +54,7 @@ class ProductController extends Controller
         $data['slug'] = Str::slug($request->name);
 
         Product::create($data);
+        Alert::success('Success', 'Berhasil Tambah Data Komponen');
         return redirect()->route('Products.index');
     }
 
